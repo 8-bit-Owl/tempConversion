@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+
+<STYLE type="text/css">
+tr#mytr {font-style: italic; color: white}
+th#myth {font-style: bold; color: purple; background-color: lightblue}
+</STYLE>
+</HEAD>
+<body>
+
+<h2>Temperature Conversion chart: </h2>
+
+<p id="demo"></p>
+
+<script>
+//#region tempetature formulas as functions
+function fahrenheit(c)
+{ 
+   return 9/5*c + 32;
+}
+function kelvin (c)
+{ 
+   return c + 273.15;
+}
+
+function rankine(c)
+{ 
+  return 9/5*c + 491.67;
+}
+function reaumur(c)
+{ 
+return 4/5*c;
+}
+
+//The following functions check the temp to assign the proper state of matter image
+
+function state(c) 
+{
+//*NOTE: the melting point for water is relative to circumstance and enviroment, the following are aprox values*
+  if(c < 17) 
+   {
+    return " ❄️ Solid/ice" ;  //the symbols were added via unicode
+   }
+     else if(c==17) 
+     {
+     return "💦 Melting" ;
+     }
+      else if(c== 27 || c==37) 
+     {
+     return " 💧 Liquid"; 
+     }
+
+     else if(c==47)
+     {
+    return "🌧️Evaporating";
+     }
+
+     else if(c>47)
+     {
+    return "☁️ Gas";
+     }
+
+}
+
+//#endregion
+
+
+//#region variable delcarations
+
+var temp = ["Celsius", "Fahrenheit", "Kelvin", "Rankine", "Reaumur", "State of matter(water)"];
+var text = "<table border = 1  width = 600 cellpadding = 10 cellspacing = 0>"; //styles the look of the table
+var i, c;
+var state;
+
+//#endregion 
+
+//#region for loops: They iterate for each condition met  calculating the temperatures
+for (i = 0; i < temp.length; i++)
+{
+ text += "<th id=myth>" + temp[i] + "</th>";
+}
+ 
+for(c=-273; c<=200; c +=10)
+{
+  if(c==0 || c== 100)
+    text += "<tr id=mytr><td>" + c + "</td><td>" +fahrenheit(c)+"</td><td>"+kelvin(c)+"</td><td>"+rankine(c)+"</td><td>";
+    
+    else
+    text += "<tr><td>" + c + "</td><td>" +fahrenheit(c)+"</td><td>"+kelvin(c)+"</td><td>"+rankine(c)+"</td><td>"+reaumur(c)+"</td>"+"</td><td>"+state(c)+"</td> </tr>" ;
+    
+   
+}
+
+
+
+document.getElementById("demo").innerHTML = text + "</tables>";
+</script>
+
+</body>
+</html>
