@@ -17,24 +17,25 @@ th#myth {font-style: bold; color: purple; background-color: lightblue}
 //#region tempetature formulas as functions
 function fahrenheit(c)
 { 
-   return 9/5*c + 32;
+   var x =9/5*c + 32;
+   return Math.round(x); 
 }
 function kelvin (c)
 { 
-   return c + 273.15;
+   var k = c + 273.15;
+   return Math.round(k); 
 }
-
 function rankine(c)
 { 
-  return 9/5*c + 491.67;
+  var ra = 9/5*c + 491.67;
+  return Math.round(ra); 
 }
 function reaumur(c)
 { 
-return 4/5*c;
+ var re =4/5*c;
+ return Math.round(re);
 }
-
 //The following functions check the temp to assign the proper state of matter image
-
 function state(c) 
 {
 //*NOTE: the melting point for water is relative to circumstance and enviroment, the following are aprox values*
@@ -50,31 +51,24 @@ function state(c)
      {
      return " 💧 Liquid"; 
      }
-
      else if(c==47)
      {
     return "🌧️Evaporating";
      }
-
      else if(c>47)
      {
     return "☁️ Gas";
      }
-
 }
-
 //#endregion
-
-
 //#region variable delcarations
-
 var temp = ["Celsius", "Fahrenheit", "Kelvin", "Rankine", "Reaumur", "State of matter(water)"];
 var text = "<table border = 1  width = 600 cellpadding = 10 cellspacing = 0>"; //styles the look of the table
 var i, c;
 var state;
 
+; 
 //#endregion 
-
 //#region for loops: They iterate for each condition met  calculating the temperatures
 for (i = 0; i < temp.length; i++)
 {
@@ -91,9 +85,6 @@ for(c=-273; c<=200; c +=10)
     
    
 }
-
-
-
 document.getElementById("demo").innerHTML = text + "</tables>";
 </script>
 
